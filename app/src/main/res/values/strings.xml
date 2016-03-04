@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Cares</string>
+    <string name="action_settings">Settings</string>
+    <string name="pickup_loc_hint">Enter Pick-Up Location</string>
+    <string name="drop_loc_hint">Enter Drop-Off Location</string>
+    <string name="car_pickup_heading">Car Pick-Up</string>
+    <string name="contact_form_heading">Contact Data</string>
+    <string name="car_drop_heading">Car Return</string>
+    <string name="car_pickup_date">Date</string>
+    <string name="car_pickup_time">Time</string>
+    <string name="title_activity_booking_step1">BookingStep1</string>
+    <string name="step1_button_text">Show Offers</string>
+    <string name="step3_button_text">Book Now</string>
+    <string name="title_activity_booking_step2">BookingStep2</string>
+    <string name="title_activity_booking_step3">BookingStep3</string>
+    <string name="first_name_contact">First Name</string>
+    <string name="last_name_contact">Last Name</string>
+    <string name="address_contact">Address</string>
+    <string name="city_contact">City</string>
+    <string name="dob">Date of Birth</string>
+    <string name="email_contact">Email</string>
+    <string name="phone_contact">Phone</string>
+    <string name="title_activity_select_location">SelectLocation</string>
+    <string name="search_loc_close">Close</string>
+    <string name="search_loc_field">Pickup Location</string>
+    <string name="title_activity_map">Map</string>
+    <string name="title_activity_activity_map">Map</string>
+    <string name="title_activity_hire_group_detail">HireGroupDetailActivity</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="diaog_subtitle1">Location Information</string>
+    <string name="dialog_subtitle2">Vehicle Information</string>
+    <string name="dialog_subtitle3">Total Charges</string>
+    <string name="pickup_loc_title">Pick-Up Location</string>
+    <string name="drop_loc_title">Drop-Off Location</string>
+    <string name="pickup_datetime_title">Pick-Up Date/Time</string>
+    <string name="drop_datetime_title">Drop-Off Date/Time</string>
+</resources>

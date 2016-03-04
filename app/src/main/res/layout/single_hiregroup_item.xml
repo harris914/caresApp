@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:id="@+id/anchor"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true" />
+
+        <RelativeLayout
+            android:id="@+id/left_side"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/anchor"
+            android:layout_marginTop="5dip"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:orientation="horizontal"
+                >
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy1" android:layout_weight=".1">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/image_layout"
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight=".8"
+                    >
+                    <ImageView
+                        android:id="@+id/hire_group_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:gravity="center"
+                        />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy2" android:layout_weight=".1">
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/right_side"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/anchor"
+            android:layout_marginTop="5dip"
+            >
+            <LinearLayout
+                android:id="@+id/right_side_row1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginTop="5dp"
+                >
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy3" android:layout_weight=".1">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight=".8"
+                    >
+                    <TextView
+                        android:id="@+id/hire_group_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:text="hire group"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginRight="20dp"
+                         />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy4" android:layout_weight=".1">
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/right_side_row2"
+                android:layout_below="@+id/right_side_row1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginTop="2dp"
+                >
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy5" android:layout_weight=".1">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight=".8"
+                    >
+                    <TextView
+                        android:id="@+id/subtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:text="subtitle"
+                        />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy6" android:layout_weight=".1">
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/right_side_row3"
+                android:layout_below="@+id/right_side_row2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginTop="5dp"
+                >
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy7" android:layout_weight=".1">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight=".8"
+                    >
+                    <TextView
+                        android:id="@+id/no_of_vehicles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:text="2 Vehicles"
+                        android:background="#f28d00"
+                        />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy8" android:layout_weight=".1">
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@+id/wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal"
+            >
+        <LinearLayout android:layout_width="0dip"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:id="@+id/linearLayout_dummy9" android:layout_weight=".05">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:id="@+id/linearLayout_dummy10" android:layout_weight=".95">
+        <TextView
+            android:id="@+id/hire_group_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:text="description"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:textColorHighlight="#f28d00"
+            />
+        </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

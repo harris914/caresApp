@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >
+        <TextView
+            android:id="@+id/dialog_subtitle1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/diaog_subtitle1"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="#000"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative2"
+        android:layout_below="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/anchor"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true" />
+
+        <RelativeLayout
+            android:id="@+id/left_side1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/anchor"
+            android:layout_marginTop="5dip"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/pickup_loc_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pickup_loc_title"
+                android:gravity="center"
+                android:textStyle="bold|italic"/>
+
+            <TextView
+                android:id="@+id/pickup_loc_value"
+                android:layout_below="@+id/pickup_loc_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="lahore"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/pickup_datetime_title"
+                android:layout_below="@+id/pickup_loc_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/pickup_datetime_title"
+                android:gravity="center"
+                android:textStyle="bold|italic"/>
+            <TextView
+                android:id="@+id/pickup_datetime_value"
+                android:layout_below="@+id/pickup_datetime_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="11/11/11 "
+                android:gravity="center"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/right_side1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/anchor"
+            android:layout_marginTop="5dip">
+
+            <TextView
+                android:id="@+id/drop_loc_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/drop_loc_title"
+                android:textStyle="bold|italic"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/drop_loc_value"
+                android:layout_below="@+id/drop_loc_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="airport"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/drop_datetime_title"
+                android:layout_below="@+id/drop_loc_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/drop_datetime_title"
+                android:textStyle="bold|italic"
+                android:gravity="center"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/drop_datetime_value"
+                android:layout_below="@+id/drop_datetime_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="airport"
+                android:gravity="center"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative3"
+        android:layout_below="@+id/relative2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dialog_subtitle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_subtitle2"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:textAllCaps="true"
+            android:textColor="#000"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative4"
+        android:layout_below="@+id/relative3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/anchor1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true" />
+
+        <RelativeLayout
+            android:id="@+id/left_side2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/anchor1"
+            android:layout_marginTop="5dip"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:id="@+id/left_side2_row1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy1" android:layout_weight=".1">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout1" android:orientation="vertical"
+                    android:layout_width="0dip" android:layout_weight=".1">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:background="@drawable/vehiclemaker"
+                        />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy2" android:layout_weight=".1">
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout2" android:orientation="vertical"
+                    android:layout_width="0dip" android:layout_weight=".4">
+                    <TextView
+                        android:id="@+id/vehicle_make"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HONDA"
+                    />
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/left_side2_row2"
+                android:layout_below="@+id/left_side2_row1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                >
+
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy3" android:layout_weight=".1">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout3" android:orientation="vertical"
+                    android:layout_width="0dip" android:layout_weight=".1">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:background="@drawable/vehiclemodel"
+                        />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy4" android:layout_weight=".1">
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout4" android:orientation="vertical"
+                    android:layout_width="0dip" android:layout_weight=".4">
+                    <TextView
+                        android:id="@+id/vehicle_model"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Civic"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/left_side2_row3"
+                android:layout_below="@+id/left_side2_row2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                >
+
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy5" android:layout_weight=".1">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout5" android:orientation="vertical"
+                    android:layout_width="0dip" android:layout_weight=".1">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:background="@drawable/vehiclemodelyear"
+                        />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy6" android:layout_weight=".1">
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout6" android:orientation="vertical"
+                    android:layout_width="0dip" android:layout_weight=".4">
+                    <TextView
+                        android:id="@+id/vehicle_year"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="2015"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/right_side2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/anchor1"
+            android:layout_marginTop="5dip"
+            android:weightSum="1"
+            >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:id="@+id/right_side2_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy8" android:layout_weight=".4">
+                    <ImageView
+                        android:id="@+id/vehicle_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy7" android:layout_weight=".1">
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative5"
+        android:layout_below="@+id/relative4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#444444"
+        android:layout_marginTop="5dp">
+
+        <RelativeLayout
+            android:id="@+id/relative9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp">
+        <View
+
+            android:id="@+id/anchor2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true" />
+
+        <RelativeLayout
+            android:id="@+id/left_side3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/anchor2"
+            android:layout_marginTop="5dip"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dialog_subtitle3"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/right_side3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/anchor2"
+            android:layout_marginTop="5dip"
+            android:weightSum="1"
+            >
+            <TextView
+                android:id="@+id/total_charge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#FFF"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
+        </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

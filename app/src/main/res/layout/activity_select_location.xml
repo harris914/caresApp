@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="cares.innostark.com.cares.SelectLocation">
+
+
+    <android.support.v7.widget.Toolbar
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/search_tool_bar"
+        android:background="#000000"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_gravity="center"
+            android:id="@+id/search_loc_toolbar_linear1"
+            >
+
+            <LinearLayout android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy1" android:layout_weight="0.12"
+                >
+
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy2" android:layout_weight="0.6"
+                android:layout_gravity="center"
+                >
+
+                <TextView
+                    android:id="@+id/loc_identifier"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/search_loc_field"
+                    android:textAllCaps="true"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+
+                     />
+            </LinearLayout>
+        <LinearLayout android:layout_width="0dip"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:id="@+id/linearLayout_dummy00" android:layout_weight="0.12" />
+            <LinearLayout android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy007" android:layout_weight="0.07" >
+
+                <ImageButton
+                    android:id="@+id/show_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/icon_location"
+                    android:gravity="end"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.Toolbar
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/search_tool_bar2"
+        android:background="#000000"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_tool_bar"
+        android:elevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_gravity="top"
+            android:id="@+id/search_loc_toolbar_linear2"
+            >
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy3" android:layout_weight="0.08">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy4" android:layout_weight="0.8"
+                android:gravity="center">
+
+                <AutoCompleteTextView
+                    android:id="@+id/searchEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/search_loc_field_bg"
+                    android:textSize="22sp"
+                    android:textColor="#000000"
+                    android:paddingLeft="5dp"
+                    android:paddingStart="5dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                />
+                <!--<EditText-->
+                    <!--android:id="@+id/searchEditText"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@drawable/search_loc_field_bg"-->
+                    <!--android:textSize="22sp"-->
+                    <!--android:textColor="#000000"-->
+                    <!--android:paddingLeft="5dp"-->
+                    <!--android:paddingStart="5dp"-->
+                    <!--android:paddingTop="3dp"-->
+                    <!--android:paddingBottom="3dp"-->
+                    <!--/>-->
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+    <ListView
+        android:id="@+id/cities_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:layout_below="@+id/search_tool_bar2"/>
+
+</RelativeLayout>

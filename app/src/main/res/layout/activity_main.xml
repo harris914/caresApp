@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:id="@+id/drawer_layout">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/app_header_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#92020b"
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:id="@+id/app_header"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentStart="false"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_height="120dp"
+                android:layout_width="230dp"
+                android:background="@drawable/logo_large"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+        <AbsoluteLayout
+            android:id="@+id/nav_buttons_center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/app_header"
+            android:layout_weight="0.6"
+            android:layout_marginTop="40dp"
+            >
+
+
+            <ImageButton
+                android:id="@+id/booking"
+                android:layout_height="124dp"
+                android:layout_width="124dp"
+                android:background="@drawable/central_button"
+                android:layout_x="119dp"
+                android:layout_y="91dp"
+                android:scaleType="fitCenter"
+                />
+            <ImageButton
+                android:id="@+id/available_cars"
+                android:layout_height="145dp"
+                android:layout_width="145dp"
+                android:background="@drawable/button_left_top"
+                android:layout_alignTop="@+id/contact_us"
+                android:layout_toLeftOf="@+id/booking"
+                android:layout_toStartOf="@+id/booking"
+                android:layout_x="38dp"
+                android:layout_y="8dp" />
+
+            <ImageButton
+                android:id="@+id/contact_us"
+                android:layout_height="145dp"
+                android:layout_width="145dp"
+                android:background="@drawable/button_right_top"
+                android:layout_above="@+id/booking"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_x="186dp"
+                android:layout_y="7dp" />
+
+
+
+
+            <ImageButton
+                android:id="@+id/location"
+                android:layout_height="145dp"
+                android:layout_width="145dp"
+                android:background="@drawable/button_left_bottom"
+                android:layout_below="@+id/booking"
+                android:layout_toLeftOf="@+id/booking"
+                android:layout_toStartOf="@+id/booking"
+                android:layout_x="38dp"
+                android:layout_y="154dp"
+                />
+            <ImageButton
+                android:id="@+id/special_offer"
+                android:layout_height="145dp"
+                android:layout_width="145dp"
+                android:background="@drawable/button_right_bottom"
+                android:layout_below="@+id/booking"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_x="186dp"
+                android:layout_y="154dp" />
+
+
+        </AbsoluteLayout>
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/nav_buttons_bottom"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_marginTop="10dp">-->
+
+            <!--<ImageButton-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="80dp"-->
+                <!--android:id="@+id/about_us"-->
+                <!--android:background="@drawable/aboutus"-->
+                <!--android:layout_marginLeft="30dp"/>-->
+
+            <!--<ImageButton-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="80dp"-->
+                <!--android:id="@+id/social"-->
+                <!--android:background="@drawable/social"-->
+                <!--android:layout_marginLeft="20dp"/>-->
+            <!--<ImageButton-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="80dp"-->
+                <!--android:id="@+id/website"-->
+                <!--android:background="@drawable/website"-->
+                <!--android:layout_marginLeft="20dp"/>-->
+            <!--<ImageButton-->
+                <!--android:layout_width="60dp"-->
+                <!--android:layout_height="80dp"-->
+                <!--android:id="@+id/buycar"-->
+                <!--android:background="@drawable/buycar"-->
+                <!--android:layout_marginLeft="20dp"/>-->
+
+
+        <!--</LinearLayout>-->
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>

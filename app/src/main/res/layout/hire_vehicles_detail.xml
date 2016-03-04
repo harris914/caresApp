@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <View
+        android:id="@+id/anchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true" />
+
+    <RelativeLayout
+        android:id="@+id/left_side"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/anchor"
+        android:layout_marginTop="5dip"
+        android:weightSum="1">
+        <LinearLayout
+            android:id="@+id/text_layout"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+            <TextView
+                android:id="@+id/v_type_transmission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="HELLO"/>
+        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/image_layout"
+                android:layout_below="@+id/text_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                    <LinearLayout android:layout_width="0dip"
+                        android:layout_height="wrap_content" android:orientation="horizontal"
+                        android:id="@+id/linearLayout_dummy1" android:layout_weight=".1">
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linearLayout1" android:orientation="vertical"
+                        android:layout_width="0dip" android:layout_weight=".8">
+                        <ImageView
+                            android:id="@+id/vehicleImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+
+                        />
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dip"
+                        android:layout_height="wrap_content" android:orientation="horizontal"
+                        android:id="@+id/linearLayout_dummy2" android:layout_weight=".1">
+                    </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/buttons_layout"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_layout"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy0" android:layout_weight=".1"/>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy6" android:layout_weight=".8">
+                    <TextView
+                        android:id="@+id/vehicle_info"
+                        android:layout_width="match_parent"
+                        android:clickable="true"
+                        android:layout_height="wrap_content"
+                        android:text="Toyota Corolla 2015"
+                        android:textAlignment="center"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy78" android:layout_weight=".1"/>
+            </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/right_side"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/anchor"
+        android:layout_marginTop="5dip"
+        >
+        <LinearLayout
+            android:id="@+id/right_side_row1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_marginTop="10dp"
+            >
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy8" android:layout_weight=".1">
+
+                    <ImageView
+                        android:id="@+id/passengers"
+                        android:layout_width="match_parent"
+                        android:clickable="true"
+                        android:layout_height="20dp"
+                        android:background="@drawable/passengers"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy9" android:layout_weight=".3">
+                    <TextView
+                        android:id="@+id/passenger_count"
+                        android:layout_width="match_parent"
+                        android:clickable="true"
+                        android:layout_height="25dp"
+                        android:textAlignment="center"
+                    />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_width="0dip" android:layout_weight=".1" />
+
+
+                    <LinearLayout
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content" android:orientation="horizontal"
+                        android:id="@+id/linearLayout_dummy13" android:layout_weight=".1">
+                        <ImageView
+                            android:id="@+id/suitcase"
+                            android:layout_width="match_parent"
+                            android:clickable="true"
+                            android:layout_height="20dp"
+                            android:background="@drawable/suitcase"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy14" android:layout_weight=".3">
+                    <TextView
+                        android:id="@+id/suitcase_count"
+                        android:layout_width="match_parent"
+                        android:clickable="true"
+                        android:layout_height="25dp"
+                        android:textAlignment="center"
+                    />
+                </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/right_side_row2"
+            android:layout_below="@+id/right_side_row1"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_marginTop="7dp"
+            >
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy20" android:layout_weight=".1">
+                <ImageView
+                    android:id="@+id/airbags"
+                    android:layout_width="match_parent"
+                    android:clickable="true"
+                    android:layout_height="20dp"
+                    android:background="@drawable/airbag"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy21" android:layout_weight=".3">
+                <TextView
+                    android:id="@+id/airbag_count"
+                    android:layout_width="match_parent"
+                    android:clickable="true"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy17" android:layout_weight=".1"/>
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy18" android:layout_weight=".1">
+                <ImageView
+                    android:id="@+id/doors_count"
+                    android:layout_width="match_parent"
+                    android:clickable="true"
+                    android:layout_height="20dp"
+                    android:background="@drawable/cardoors"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy19" android:layout_weight=".3">
+                <TextView
+                    android:id="@+id/door_count"
+                    android:layout_width="match_parent"
+                    android:clickable="true"
+                    android:layout_height="25dp"
+                    android:textAlignment="center"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/right_side_row3"
+            android:layout_below="@+id/right_side_row2"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_marginTop="7dp"
+            >
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout2" android:orientation="horizontal"
+                    android:layout_width="0dip" android:layout_weight=".13"
+                    android:layout_gravity="center">
+                    <ImageButton
+                        android:id="@+id/getCharge"
+                        android:layout_width="match_parent"
+                        android:layout_height="24dp"
+                        android:background="@drawable/getcharge"
+                    />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout89" android:orientation="horizontal"
+                    android:layout_width="0dip" android:layout_weight=".0" >
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_width="0dip" android:layout_weight=".9"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:id="@+id/total_vehicle_charge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:visibility="visible"
+
+                        />
+                </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/right_side_row4"
+            android:layout_below="@+id/right_side_row3"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_marginTop="9dp"
+            >
+
+            <!--<LinearLayout-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/linearLayout12" android:orientation="horizontal"-->
+                <!--android:layout_width="0dip" android:layout_weight=".15"-->
+                <!--android:layout_gravity="center">-->
+                <!--<ImageButton-->
+                    <!--android:id="@+id/checkout"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="28dp"-->
+                    <!--android:background="@drawable/checkout"-->
+                    <!--/>-->
+            <!--</LinearLayout>-->
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout10" android:orientation="horizontal"
+                android:layout_width="0dip" android:layout_weight=".01" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_width="0dip" android:layout_weight=".7"
+                android:layout_gravity="center">
+                <!--<TextView-->
+                    <!--android:id="@+id/total_vehicle_charge"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textColor="#000"-->
+                    <!--android:visibility="visible"-->
+                    <!--/>-->
+                <Button
+                    android:id="@+id/checkout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="Checkout"
+                    android:background="#f28d00"
+                    android:textColor="#FFFFFF"
+
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

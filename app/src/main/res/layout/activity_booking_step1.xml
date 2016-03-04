@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    >
+
+    <android.support.v7.widget.Toolbar
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/search_tool_bar"
+        layout="@layout/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:background="#000000">
+
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/dummy2"
+                android:gravity="center"
+                android:weightSum="1"
+                >
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy00" android:layout_weight="0.08" />
+
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy002" android:layout_weight="0.6"
+
+                    >
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/logo_large"
+                        android:gravity="center"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy007" android:layout_weight="0.02" />
+            </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <!--  Pagination image under the toolbar  -->
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/pagination_bg"
+        android:layout_below="@+id/search_tool_bar"
+        android:id="@+id/linearLayout">
+        <LinearLayout android:layout_width="0dip"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:id="@+id/linearLayout_dummy1" android:layout_weight=".35">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout1" android:orientation="vertical"
+            android:layout_width="0dip" android:layout_weight=".3">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+
+            android:background="@drawable/page1"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_centerHorizontal="true"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dip"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:id="@+id/linearLayout_dummy2" android:layout_weight=".35">
+        </LinearLayout>
+
+    </LinearLayout>
+    <!--  Ends here -->
+
+
+    <!--  Car Pickup Box  -->
+        <RelativeLayout
+            android:id="@+id/car_pick_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/layout_bg">
+
+            <TextView
+                android:id="@+id/car_pickup_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/car_pickup_heading"
+                android:paddingStart="10dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:background="@drawable/step1_textviews"
+                android:textColor="#666666"
+                android:textAllCaps="true"
+                android:textStyle="bold"/>
+
+
+            <LinearLayout
+                android:id="@+id/linear_middle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/car_pickup_heading"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                >
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy3" android:layout_weight=".01"/>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy4" android:layout_weight=".37">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/pickup_loc_field"
+                        android:hint="@string/pickup_loc_hint"
+                        android:paddingLeft="5dp"
+                        android:paddingStart="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingEnd="5dp"
+                        android:inputType="text"
+                        android:textSize="16sp"
+                        android:textColorHint="#000000"
+                        android:focusableInTouchMode="false"
+                        android:editable="false"
+                        android:textCursorDrawable="@null"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy000" android:layout_weight=".04"/>
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy5" android:layout_weight=".12"
+                    android:layout_gravity="center_vertical">
+
+                    <ImageButton
+                        android:layout_width="20dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/icon_location"
+                        android:id="@+id/loc_icon1"
+                        android:clickable="false"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/middle_bottom_divider1"
+                android:layout_below="@+id/linear_middle1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#dddddd"/>
+
+            <LinearLayout
+                android:id="@+id/linear_bottom1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_middle1"
+                android:orientation="horizontal"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:gravity="center"
+                >
+
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:id="@+id/linearLayout_dummy9" android:layout_weight=".035">
+                    >
+                <ImageButton
+                    android:id="@+id/calendar1"
+                    android:layout_height="25dp"
+                    android:layout_width="20dp"
+                    android:background="@drawable/icon_calendar"
+                    />
+                </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy10" android:layout_weight=".11">
+                >
+                <EditText
+                    android:id="@+id/pickup_date"
+                    android:inputType="date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/car_pickup_date"
+                    android:text="2/2/2016"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textCursorDrawable="@null"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy11" android:layout_weight=".05">
+                >
+                <ImageButton
+                    android:id="@+id/pickup_clock"
+                    android:layout_height="25dp"
+                    android:layout_width="25dp"
+                    android:background="@drawable/icon_clock"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy12" android:layout_weight=".11">
+                <EditText
+                    android:id="@+id/pickup_time"
+                    android:inputType="time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/car_pickup_time"
+                    android:text="08:00"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginRight="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:focusableInTouchMode="false"
+                    android:textCursorDrawable="@null"/>
+            </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+    <!-- Car pickup ends here -->
+
+    <!-- Car drop starts here -->
+    <RelativeLayout
+        android:id="@+id/car_drop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/layout_bg"
+        android:layout_below="@+id/car_pick_up">
+
+        <TextView
+            android:id="@+id/car_drop_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/car_drop_heading"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:background="@drawable/step1_textviews"
+            android:textColor="#666666"
+            android:textAllCaps="true"
+            android:textStyle="bold"/>
+
+        <LinearLayout
+            android:id="@+id/linear_middle2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/car_drop_heading"
+            android:paddingStart="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:orientation="horizontal"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy6" android:layout_weight=".01">
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy7" android:layout_weight=".37">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/drop_loc_field"
+                    android:hint="@string/drop_loc_hint"
+                    android:paddingLeft="5dp"
+                    android:paddingStart="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingEnd="5dp"
+                    android:inputType="text"
+                    android:textSize="16sp"
+                    android:textColorHint="#000000"
+                    android:focusableInTouchMode="false"
+                    android:editable="false"
+                    android:textCursorDrawable="@null"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy0000" android:layout_weight=".04"/>
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy8" android:layout_weight=".12">
+                <ImageButton
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/icon_location"
+                    android:gravity="center"
+                    android:id="@+id/loc_icon2"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:id="@+id/middle_bottom_divider2"
+            android:layout_below="@+id/linear_middle2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#dddddd"/>
+        <LinearLayout
+            android:id="@+id/linear_bottom2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linear_middle2"
+            android:paddingStart="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy13" android:layout_weight=".035">
+            <ImageButton
+                android:id="@+id/calendar2"
+                android:layout_height="25dp"
+                android:layout_width="20dp"
+                android:background="@drawable/icon_calendar" />
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:id="@+id/linearLayout_dummy14" android:layout_weight=".11">
+            <EditText
+                android:id="@+id/drop_date"
+                android:inputType="date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/car_pickup_date"
+                android:textSize="16sp"
+                android:layout_weight="0.18"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
+                android:focusableInTouchMode="false"
+                android:textCursorDrawable="@null"/>
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:id="@+id/linearLayout_dummy15" android:layout_weight=".05">
+            <ImageButton
+                android:id="@+id/drop_clock"
+                android:layout_height="25dp"
+                android:layout_width="25dp"
+                android:background="@drawable/icon_clock"
+                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_centerVertical="true"/>
+            </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:id="@+id/linearLayout_dummy16" android:layout_weight=".11">
+            <EditText
+                android:id="@+id/drop_time"
+                android:inputType="time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/car_pickup_time"
+                android:text="08:00"
+                android:textSize="16sp"
+                android:layout_marginRight="2dp"
+                android:layout_marginEnd="2dp"
+                android:focusableInTouchMode="false"
+                android:textCursorDrawable="@null"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+    <!-- Car drop ends here -->
+
+    <Button
+        android:id="@+id/show_offers_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/car_drop"
+        android:background="@drawable/button_step1"
+        android:text="@string/step1_button_text"
+        android:textColor="#FFFFFF"
+        />
+
+
+</RelativeLayout>

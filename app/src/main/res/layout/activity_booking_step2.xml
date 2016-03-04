@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="cares.innostark.com.cares.BookingStep2">
+
+    <android.support.v7.widget.Toolbar
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/search_tool_bar"
+        layout="@layout/tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:background="#000000">
+
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:id="@+id/dummy2"
+            android:gravity="center"
+            android:weightSum="1"
+            >
+            <LinearLayout android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy00" android:layout_weight="0.08" />
+            <LinearLayout android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy002" android:layout_weight="0.6"
+
+                >
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/logo_large"
+                    android:gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/pagination_bg"
+        android:layout_below="@+id/search_tool_bar"
+        android:id="@+id/pagination_image_layout">
+        <LinearLayout android:layout_width="0dip"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:id="@+id/linearLayout_dummy1" android:layout_weight=".35">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout1" android:orientation="vertical"
+            android:layout_width="0dip" android:layout_weight=".3">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+
+                android:background="@drawable/page2"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_centerHorizontal="true"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dip"
+            android:layout_height="wrap_content" android:orientation="horizontal"
+            android:id="@+id/linearLayout_dummy2" android:layout_weight=".35">
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+        <ListView
+            android:id="@+id/car_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:layout_below="@+id/pagination_image_layout">
+        </ListView>
+
+
+</RelativeLayout>
