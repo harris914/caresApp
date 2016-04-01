@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -28,6 +27,7 @@ import cares.innostark.com.cares.Models.SubHireGroups;
 public class BookingStep2 extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     ListView hireGroupList;
+    //HorizontalListView hireGroupList;
     String url="";
     Bundle car_api_params;
     private boolean isLoaded;
@@ -51,11 +51,8 @@ public class BookingStep2 extends AppCompatActivity implements AdapterView.OnIte
         });
 
 
-        //getting the bundle from BookingStep1 activity
-        //siteProperties=getIntent().getExtras();
+        //getting the bundle properties from BookingStep1 activity
         car_api_params=getIntent().getExtras();
-        //Toast.makeText(BookingStep2.this,car_api_params.getString("PickUpCityId1")+"\n"+car_api_params.getString("PickUpCityId2"),Toast.LENGTH_LONG).show();
-        //url+= Constants.baseUrl + Constants.getParentHireGroups;
 
         cd = new ConnectionDetector(this);
         if (!(cd.isConnectingToInternet())) {
@@ -71,7 +68,7 @@ public class BookingStep2 extends AppCompatActivity implements AdapterView.OnIte
         window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
 
         hireGroupList=(ListView) findViewById(R.id.car_list);
-
+        //hireGroupList = (HorizontalListView) findViewById(R.id.car_list);
     }
 
 //    @Override
@@ -116,7 +113,7 @@ public class BookingStep2 extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        final HireGroups i = items.get(position);
+        final HireGroups i = items.get(position % 3);        // taking mode here because we have repeated the list 3 times
         String hiregrpname=i.getHireGroupName();
         final ArrayList<SubHireGroups> sh=i.getSubHireGroup();
         //Toast.makeText(BookingStep2.this, "Hello", Toast.LENGTH_SHORT).show();
@@ -130,8 +127,7 @@ public class BookingStep2 extends AppCompatActivity implements AdapterView.OnIte
     private class GetHireGroupData extends AsyncTask<String, String, String>
     {
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
+        protected void onPreExecute() {            super.onPreExecute();
             // Showing progress dialog
             if (!isLoaded) {
                 dialog = new ProgressDialog(BookingStep2.this);
@@ -169,6 +165,7 @@ public class BookingStep2 extends AppCompatActivity implements AdapterView.OnIte
                 {
                     hireGroups= new JSONArray(s);
                     items= HireGroupsMapper.MapHireGroups(hireGroups);
+
                 }
                 catch(JSONException e)
                 {

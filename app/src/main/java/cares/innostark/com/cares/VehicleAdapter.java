@@ -1,9 +1,12 @@
 package cares.innostark.com.cares;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -27,7 +30,7 @@ public class VehicleAdapter extends ArrayAdapter {
     LayoutInflater inflater;
     String hireGroupName;
     SubHireGroups s;
-    TextView vehicleChargePerDay,totalVehicleCharge;
+    TextView totalVehicleCharge;
 
     public VehicleAdapter(Context context, ArrayList<SubHireGroups> list,String sh_name) {
         super(context,0, list);
@@ -41,11 +44,6 @@ public class VehicleAdapter extends ArrayAdapter {
         return result.size();
     }
 
-//    @Override
-//    public Object getItem(int position) {
-//        return null;
-//    }
-
     @Override
     public long getItemId(int position) {
         return position;
@@ -57,7 +55,13 @@ public class VehicleAdapter extends ArrayAdapter {
 
         s = result.get(position);
         if(s != null) {
+            //v = inflater.inflate(R.layout.hire_vehicles_detail, null);
             v = inflater.inflate(R.layout.hire_vehicles_detail, null);
+            if (position % 2 == 1) {
+                v.setBackgroundColor(Color.parseColor("#EEEEEE"));
+            } else {
+                v.setBackgroundColor(Color.parseColor("#DCDCDC"));
+            }
             final TextView typeTrans = (TextView) v.findViewById(R.id.v_type_transmission);
             final TextView vehicle_info = (TextView) v.findViewById(R.id.vehicle_info);
             final TextView passenger_count= (TextView) v.findViewById(R.id.passenger_count);
@@ -93,6 +97,14 @@ public class VehicleAdapter extends ArrayAdapter {
             if(door_count != null){
                 door_count.setText(s.getNoOfDoors());
             }
+
+
+            Animation anim = new AlphaAnimation(0.0f, 1.0f);
+            anim.setDuration(200); //You can manage the blinking time with this parameter
+            anim.setStartOffset(20);
+            anim.setRepeatMode(Animation.REVERSE);
+            anim.setRepeatCount(Animation.INFINITE);
+            getCharge.startAnimation(anim);
             //setting on click listener on getcharge button to get vehicle charge
             getCharge.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -100,7 +112,7 @@ public class VehicleAdapter extends ArrayAdapter {
                     //vehicleCharge.setVisibility(View.VISIBLE);
                     //checkout.setVisibility(View.VISIBLE);
                     //getCharge.setVisibility(View.GONE);
-                    ((ListView) parent).performItemClick(v, position, 0);
+                    ((ListView) parent).performItemClick(v, position , 0);
                     //this sends a callback to the previous Activity's OnItemClick on which the listView is being shown and
                     // I make the API call to get charges.
                 }
@@ -109,7 +121,7 @@ public class VehicleAdapter extends ArrayAdapter {
             checkout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ((ListView) parent).performItemClick(v, position, 0);
+                    ((ListView) parent).performItemClick(v, position , 0);
                 }
             });
 

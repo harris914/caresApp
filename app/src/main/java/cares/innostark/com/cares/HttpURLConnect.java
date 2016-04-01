@@ -33,7 +33,8 @@ public class HttpURLConnect {
         BufferedReader reader = null;
         HttpURLConnection con=null;
         try {
-            String urlParameters  = "url=bookingdemo";
+            //String urlParameters  = "url=bookingdemo";
+            String urlParameters  = "url="+ Constants.url;
             byte[] postData       = urlParameters.getBytes( "UTF-8" );
             int    postDataLength = postData.length;
             URL url = new URL(uri);

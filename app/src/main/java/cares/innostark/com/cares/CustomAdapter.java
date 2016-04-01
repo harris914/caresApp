@@ -1,6 +1,7 @@
 package cares.innostark.com.cares;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.view.animation.Animation;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -34,7 +36,7 @@ public class CustomAdapter extends ArrayAdapter<HireGroups> {
 
     @Override
     public int getCount() {
-        return result.size();
+        return 3 * result.size();       // to repeat the list 3 times
     }
 
     @Override
@@ -44,23 +46,31 @@ public class CustomAdapter extends ArrayAdapter<HireGroups> {
 
     @Override
     public boolean isEnabled(int position) {
-        final HireGroups h = result.get(position);
+        final HireGroups h = result.get(position % 3);           // repeated the list 3 times
         if(h.getSubHireGroup().size() == 0) {
             return false;
         }
-        return super.isEnabled(position);
+        return super.isEnabled(position % 3);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v=convertView;
 
-        final HireGroups i = result.get(position);
+
+        final HireGroups i = result.get(position % 3);          // to get right model as the list is repeated 3 times
+
         if(i != null) {
             v = inflater.inflate(R.layout.single_hiregroup_item, null);
+            if (position % 2 == 1) {
+                v.setBackgroundColor(Color.parseColor("#EEEEEE"));
+            } else {
+                v.setBackgroundColor(Color.parseColor("#DCDCDC"));
+            }
             final TextView hireGroupName = (TextView) v.findViewById(R.id.hire_group_name);
             final TextView subtitle = (TextView) v.findViewById(R.id.subtitle);
-            final TextView desc = (TextView) v.findViewById(R.id.hire_group_desc);
+            //final TextView desc = (TextView) v.findViewById(R.id.hire_group_desc);
+            final ImageView desc = (ImageView) v.findViewById(R.id.hire_group_desc);
             final ImageView hiregroupImage = (ImageView) v.findViewById(R.id.hire_group_image);
             final TextView vehicleCount = (TextView) v.findViewById(R.id.no_of_vehicles);
 
@@ -74,7 +84,13 @@ public class CustomAdapter extends ArrayAdapter<HireGroups> {
                 Picasso.with(c).load(i.getPhotoUrl()).into(hiregroupImage);
             }
             if(desc != null) {
-                desc.setText(i.getDescription());
+                //desc.setText(i.getDescription());
+                desc.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getContext(),i.getDescription(),Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
             if(vehicleCount != null)
             {
@@ -87,10 +103,10 @@ public class CustomAdapter extends ArrayAdapter<HireGroups> {
                 if(count > 0)
                 {
                     vehicleCount.startAnimation(anim);
-                    vehicleCount.setText("  "+count+" Vehicle(s) ");
+                    vehicleCount.setText("  "+count+" Available ");
                 }
                 else
-                    vehicleCount.setText("  "+count+" Vehicle(s) ");
+                    vehicleCount.setText("  "+count+" Available ");
             }
 
         }

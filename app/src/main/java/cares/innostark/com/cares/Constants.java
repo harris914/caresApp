@@ -11,6 +11,7 @@ public class Constants {
     public static final String getParentHireGroups="GetAllParentHireGroups";
     public static final String getSiteContents = "GetSiteContents";
     public static final String getVehicleCharge = "https://careswebapi.azurewebsites.net/api/HireGroupStandardRate";
-    public static final String url = "bookingdemo";
+    //public static final String url = "bookingdemo";
+    public static final String url = "innostarkSys";
     public static final String saveBooking = "https://careswebapi.azurewebsites.net/api/SetOnlineBooking";
 }

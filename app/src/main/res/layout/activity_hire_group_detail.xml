@@ -47,7 +47,8 @@
         android:id="@+id/vehicle_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
+        android:divider="@drawable/list_divider"
+        android:dividerHeight="2dp"
         android:layout_below="@+id/search_tool_bar">
     </ListView>
 

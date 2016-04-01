@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -15,7 +16,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
 
         }
         else
-            getDataFromApi();
+            getDataFromApi();         // getting the app data from the API
 
         booking=(ImageButton) findViewById(R.id.booking);
         available_cars=(ImageButton) findViewById(R.id.available_cars);
@@ -75,7 +75,6 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 //Toast.makeText(MainActivity.this,"Booking clicked",Toast.LENGTH_SHORT).show();
                 i=new Intent(MainActivity.this,BookingStep1.class);
-                //i.putExtra("opWorkPlaces",opWorkPlList);
                 i.putExtras(siteProperties);
                 startActivity(i);
             }
@@ -84,27 +83,46 @@ public class MainActivity extends Activity {
         available_cars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Available Cars clicked",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this,"Available Cars clicked",Toast.LENGTH_SHORT).show();
+                i=new Intent(MainActivity.this,BookingStep1.class);
+                i.putExtras(siteProperties);
+                startActivity(i);
             }
         });
         contact_us.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Contact Us clicked",Toast.LENGTH_SHORT).show();
+                openWebPage();
             }
         });
+
+        // showing all the locations on the map, just like SelectLocation
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Location clicked",Toast.LENGTH_SHORT).show();
+                i=new Intent(MainActivity.this,MapsActivity.class);
+                ArrayList<OperationWorkPlaces> workLocs = siteProperties.getParcelableArrayList("opWorkPlaces");
+                i.putExtra("all_locations_list",workLocs);
+                // setting it to 'SelectLocation' because showing all locations on the map just like in SelectLocation activity
+                String callingActivity="SelectLocation";
+                i.putExtra("callingActivity",callingActivity);
+                i.putExtras(siteProperties);
+                startActivity(i);
             }
         });
         special_offer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this,"Special Offers clicked",Toast.LENGTH_SHORT).show();
+                i=new Intent(MainActivity.this,BookingStep1.class);
+                i.putExtras(siteProperties);
+                startActivity(i);
             }
         });
+    }
+
+    private void openWebPage() {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://tajeercare.com/bookingdemo"));
+        startActivity(browserIntent);
     }
 
     @Override

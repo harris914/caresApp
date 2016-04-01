@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -48,9 +46,9 @@ public class SelectLocation extends AppCompatActivity {
             }
         });
 
-        search= (AutoCompleteTextView) findViewById(R.id.searchEditText);
+        //search= (AutoCompleteTextView) findViewById(R.id.searchEditText);
         //loc_search=(EditText) findViewById(R.id.searchEditText);
-        loc_identifier=(TextView) findViewById(R.id.loc_identifier);
+        loc_identifier=(TextView) findViewById(R.id.loc_identifier);    // heading in toolbar
 
         final Intent i=getIntent();
         final String val=i.getStringExtra("val");
@@ -82,17 +80,19 @@ public class SelectLocation extends AppCompatActivity {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
 
-        for(int count=0; count < workLocs.size();count++)
+        for(int count=0; count < workLocs.size();count++)     // adding the correct location objects to show on the listview
         {
             OperationWorkPlaces obj=workLocs.get(count);
-            String loc=obj.getLocationName();
-            locsList.add(loc);
+            //if(obj.getLatitude() != null && obj.getLongitude() != null) {
+                String loc = obj.getLocationName();
+                locsList.add(loc);
+            //}
         }
 
         // setting the adapter for autocomplete edit text to search for locations
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, locsList);
-        search.setAdapter(adapter);
-        
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, locsList);
+//        search.setAdapter(adapter);
+//
 //        loc_search.addTextChangedListener(new TextWatcher() {
 //            @Override
 //            public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -134,7 +134,7 @@ public class SelectLocation extends AppCompatActivity {
         });
     }
 
-    private void searchList() {
+//    private void searchList() {
 //        String s = loc_search.getText().toString();
 //        int textlength = s.length();
 //        String sApp;
@@ -154,5 +154,5 @@ public class SelectLocation extends AppCompatActivity {
 //        }
 //        listAdapter.notifyDataSetChanged();
 
-    }
+//    }
 }

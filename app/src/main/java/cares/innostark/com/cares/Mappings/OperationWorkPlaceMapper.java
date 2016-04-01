@@ -45,9 +45,24 @@ public class OperationWorkPlaceMapper {
         String op_work_pl_id= c.getString(TAG_OPERATION_WORK_PLACE_ID);
         String city_id = c.getString(TAG_CITY_ID);
         String op_id = c.getString(TAG_OPERATION_ID);
-        String longitude = c.getString(TAG_LONGITUDE);
-        String latitude = c.getString(TAG_LATITUDE);
-        String phone = c.getString(TAG_PHONE);
+        String longitude ;
+        if(c.isNull(TAG_LONGITUDE)) {            // checking if null is being received or not from the response
+            longitude = null;
+        } else {
+            longitude = c.getString(TAG_LONGITUDE);
+        }
+        String latitude ;
+        if(c.isNull(TAG_LATITUDE)) {            // checking if null is being received or not from the response
+            latitude = null;
+        } else {
+            latitude = c.getString(TAG_LATITUDE);
+        }
+        String phone;
+        if(c.isNull(TAG_PHONE)) {            // checking if null is being received or not from the response
+            phone = null;
+        } else {
+            phone = c.getString(TAG_PHONE);
+        }
         String address = c.getString(TAG_ADDRESS);
 
         model.setPhone(phone);

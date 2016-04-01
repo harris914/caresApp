@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -91,8 +92,12 @@ public class HireGroupDetailActivity extends AppCompatActivity implements Adapte
         }
         else if(viewId == R.id.checkout) {
             //Toast.makeText(getApplicationContext(), "here" + id, Toast.LENGTH_SHORT).show();
-
-            getSelectedCarInfoAndMoveToStep3(position);
+            if(!(cd.isConnectingToInternet()))
+            {
+                Toast.makeText(getApplicationContext(),"No Internet Access",Toast.LENGTH_SHORT).show();
+            }
+            else
+                getSelectedCarInfoAndMoveToStep3(position);
 
         }
 
@@ -171,6 +176,7 @@ public class HireGroupDetailActivity extends AppCompatActivity implements Adapte
                 }
             }
             View v=getViewByPosition(pos_in_list,vehicleList);           // getting the view so that standard rates could be set from where the call came to get the charges
+            final LinearLayout layout=(LinearLayout) v.findViewById(R.id.linearLayout2);
             final ImageButton getCharge=(ImageButton) v.findViewById(R.id.getCharge);
             final Button checkout=(Button) v.findViewById(R.id.checkout);
 
@@ -182,6 +188,7 @@ public class HireGroupDetailActivity extends AppCompatActivity implements Adapte
                 totalCharges.setText("SAR " + total_standard_charge.intValue()+ " ("+i+"/day)");              //setting the total charges of the selected vehicle
                 checkout.setVisibility(View.VISIBLE);
                 getCharge.setVisibility(View.GONE);
+                layout.setVisibility(View.GONE);
             }
             else
             {
@@ -191,6 +198,8 @@ public class HireGroupDetailActivity extends AppCompatActivity implements Adapte
         }
 
     }
+
+    //this function returns a listview item at position= pos from the given listView when an item in it is clicked
     public View getViewByPosition(int pos, ListView listView) {
         final int firstListItemPosition = listView.getFirstVisiblePosition();
         final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;

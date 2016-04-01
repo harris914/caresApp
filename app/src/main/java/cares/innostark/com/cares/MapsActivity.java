@@ -110,52 +110,50 @@ public class MapsActivity extends FragmentActivity {
     {
         ArrayList<OperationWorkPlaces> locs=i.getParcelableArrayListExtra("all_locations_list");
         mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
-        for (int k=0;k < locs.size(); k++)
-        {
-            OperationWorkPlaces obj=locs.get(k);
-            LatLng loc = new LatLng(Double.parseDouble(obj.getLatitude()), Double.parseDouble(obj.getLongitude()));
-            if(obj.getLocationName() == null || obj.getLocationName().equals("")) {
-                mMap.addMarker(new MarkerOptions().position(loc).snippet(obj.getAddress()+"\n"+obj.getPhone()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+        for (int k=0;k < locs.size(); k++) {
+            OperationWorkPlaces obj = locs.get(k);
+            if (obj.getLatitude() != null && obj.getLongitude() != null) {      // if lat/lng are not null then show location on map
+                LatLng loc = new LatLng(Double.parseDouble(obj.getLatitude()), Double.parseDouble(obj.getLongitude()));
+                if (obj.getLocationName() == null || obj.getLocationName().equals("")) {
+                    mMap.addMarker(new MarkerOptions().position(loc).snippet(obj.getAddress() + "\n" + obj.getPhone()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                } else if (obj.getAddress() == null || obj.getAddress().equals("")) {
+                    mMap.addMarker(new MarkerOptions().position(loc).title(obj.getLocationName()).snippet(obj.getPhone()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                } else if (obj.getPhone() == null || obj.getPhone().equals("")) {
+                    mMap.addMarker(new MarkerOptions().position(loc).title(obj.getLocationName()).snippet(obj.getAddress()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                } else
+                    mMap.addMarker(new MarkerOptions().position(loc).title(obj.getLocationName()).snippet(obj.getAddress() + "\n" + obj.getPhone()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(5.0f));
+                mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+                    @Override
+                    public View getInfoWindow(Marker marker) {
+                        return null;
+                    }
+
+                    @Override
+                    public View getInfoContents(Marker marker) {
+                        Context mContext = getApplicationContext();
+                        LinearLayout info = new LinearLayout(mContext);
+                        info.setOrientation(LinearLayout.VERTICAL);
+
+                        TextView title = new TextView(mContext);
+                        title.setTextColor(Color.BLACK);
+                        title.setGravity(Gravity.CENTER);
+                        title.setTypeface(null, Typeface.BOLD);
+                        title.setText(marker.getTitle());
+
+                        TextView snippet = new TextView(mContext);
+                        snippet.setTextColor(Color.GRAY);
+                        snippet.setText(marker.getSnippet());
+
+                        info.addView(title);
+                        info.addView(snippet);
+
+                        return info;
+                    }
+                });
             }
-            else if(obj.getAddress() == null || obj.getAddress().equals("")) {
-                mMap.addMarker(new MarkerOptions().position(loc).title(obj.getLocationName()).snippet(obj.getPhone()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-            }
-            else if(obj.getPhone() == null || obj.getPhone().equals("")) {
-                mMap.addMarker(new MarkerOptions().position(loc).title(obj.getLocationName()).snippet(obj.getAddress()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-            }
-            else
-                mMap.addMarker(new MarkerOptions().position(loc).title(obj.getLocationName()).snippet(obj.getAddress()+"\n"+obj.getPhone()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
-            mMap.animateCamera( CameraUpdateFactory.zoomTo( 8.0f ) );
-            mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
-                @Override
-                public View getInfoWindow(Marker marker) {
-                    return null;
-                }
-
-                @Override
-                public View getInfoContents(Marker marker) {
-                    Context mContext = getApplicationContext();
-                    LinearLayout info = new LinearLayout(mContext);
-                    info.setOrientation(LinearLayout.VERTICAL);
-
-                    TextView title = new TextView(mContext);
-                    title.setTextColor(Color.BLACK);
-                    title.setGravity(Gravity.CENTER);
-                    title.setTypeface(null, Typeface.BOLD);
-                    title.setText(marker.getTitle());
-
-                    TextView snippet = new TextView(mContext);
-                    snippet.setTextColor(Color.GRAY);
-                    snippet.setText(marker.getSnippet());
-
-                    info.addView(title);
-                    info.addView(snippet);
-
-                    return info;
-                }
-            });
         }
     }
 

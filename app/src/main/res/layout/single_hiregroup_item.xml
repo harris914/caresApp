@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <RelativeLayout
         android:id="@+id/wrapper"
@@ -19,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/anchor"
             android:layout_marginTop="5dip"
+            android:layout_marginBottom="5dip"
             >
 
             <LinearLayout
@@ -26,6 +28,9 @@
                 android:layout_height="wrap_content"
                 android:weightSum="1"
                 android:orientation="horizontal"
+                android:background="@drawable/rounded_corners_bg"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 >
                 <LinearLayout android:layout_width="0dip"
                     android:layout_height="wrap_content" android:orientation="horizontal"
@@ -37,7 +42,6 @@
                     android:orientation="horizontal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_weight=".8"
                     >
                     <ImageView
@@ -78,7 +82,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_weight=".8"
+                    android:layout_weight=".65"
                     >
                     <TextView
                         android:id="@+id/hire_group_name"
@@ -94,7 +98,24 @@
                 </LinearLayout>
                 <LinearLayout android:layout_width="0dip"
                     android:layout_height="wrap_content" android:orientation="horizontal"
-                    android:id="@+id/linearLayout_dummy4" android:layout_weight=".1">
+                    android:id="@+id/linearLayout_dummy4" android:layout_weight=".05">
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight=".20"
+                    android:gravity="center"
+                    >
+                    <ImageView
+                        android:id="@+id/hire_group_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="22dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/icon_info_black"
+                        />
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
@@ -156,9 +177,8 @@
                         android:id="@+id/no_of_vehicles"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#000"
-                        android:text="2 Vehicles"
-                        android:background="#f28d00"
+                        android:textColor="#fff"
+                        android:background="#000"
                         />
                 </LinearLayout>
                 <LinearLayout android:layout_width="0dip"
@@ -183,21 +203,22 @@
             android:layout_height="wrap_content" android:orientation="horizontal"
             android:id="@+id/linearLayout_dummy9" android:layout_weight=".05">
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dip"
-            android:layout_height="wrap_content" android:orientation="horizontal"
-            android:id="@+id/linearLayout_dummy10" android:layout_weight=".95">
-        <TextView
-            android:id="@+id/hire_group_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:text="description"
-            android:textSize="15sp"
-            android:textStyle="normal"
-            android:textColorHighlight="#f28d00"
-            />
-        </LinearLayout>
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dip"-->
+            <!--android:layout_height="wrap_content" android:orientation="horizontal"-->
+            <!--android:id="@+id/linearLayout_dummy10" android:layout_weight=".95">-->
+        <!--<TextView-->
+            <!--android:id="@+id/hire_group_desc"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:textColor="#000"-->
+            <!--android:text="description"-->
+            <!--android:textSize="15sp"-->
+            <!--android:textStyle="normal"-->
+            <!--android:textColorHighlight="#f28d00"-->
+            <!--android:visibility="gone"-->
+            <!--/>-->
+        <!--</LinearLayout>-->
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

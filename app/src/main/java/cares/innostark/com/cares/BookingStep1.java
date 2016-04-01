@@ -39,7 +39,7 @@ public class BookingStep1 extends AppCompatActivity {
     String cityId,opWorkPlId;
     Bundle car_api_params;
     ModelStep1 model=new ModelStep1();
-    String lat,lng,location;
+    String message,location;
     OperationWorkPlaces obj1,obj2;                // obj1 for pickup info and obj2 for dropoff info
 
     @Override
@@ -93,6 +93,12 @@ public class BookingStep1 extends AppCompatActivity {
                 {
                     Toast.makeText(BookingStep1.this,"Select Pickup Location first",Toast.LENGTH_SHORT).show();
                 }
+                else if(obj1.getLatitude() == null && obj1.getLongitude() == null)
+                {
+                    message="Can't find this location on map.";
+                    Toast.makeText(BookingStep1.this,message,Toast.LENGTH_SHORT).show();
+                }
+
                 else {
                     Intent i = new Intent(BookingStep1.this, MapsActivity.class);
                     String callingAct = "BookingStep1";
@@ -102,18 +108,7 @@ public class BookingStep1 extends AppCompatActivity {
                 }
             }
         });
-//        info_button1=(ImageButton) findViewById(R.id.info_button1);               // image button to show Google Map
-//        info_button1.setEnabled(false);
-//        info_button1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i=new Intent(BookingStep1.this, MapsActivity.class);
-//                String callingAct="BookingStep1";
-//                i.putExtra("loc_info",obj1);
-//                i.putExtra("callingActivity",callingAct);
-//                startActivity(i);
-//            }
-//        });
+
         pickup_date=(EditText) findViewById(R.id.pickup_date);
         calendar1=(ImageButton) findViewById(R.id.calendar1);            // calendar image for pickup date
         calendar1.setOnClickListener(new View.OnClickListener() {
@@ -247,6 +242,11 @@ public class BookingStep1 extends AppCompatActivity {
                 {
                     Toast.makeText(BookingStep1.this,"Select Drop-off Location first",Toast.LENGTH_SHORT).show();
                 }
+                else if(obj2.getLatitude() == null && obj2.getLongitude() == null)
+                {
+                    message="Can't find this location on map.";
+                    Toast.makeText(BookingStep1.this,message,Toast.LENGTH_SHORT).show();
+                }
                 else {
                     Intent intent = new Intent(BookingStep1.this, MapsActivity.class);
                     String callingAct = "BookingStep1";
@@ -256,18 +256,7 @@ public class BookingStep1 extends AppCompatActivity {
                 }
             }
         });
-//        info_button2=(ImageButton) findViewById(R.id.info_button2);
-//        info_button2.setEnabled(false);
-//        info_button2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(BookingStep1.this,MapsActivity.class);
-//                String callingAct="BookingStep1";
-//                intent.putExtra("loc_info",obj2);
-//                intent.putExtra("callingActivity",callingAct);
-//                startActivity(intent);
-//            }
-//        });
+
         drop_date=(EditText) findViewById(R.id.drop_date);
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 1);
@@ -415,35 +404,34 @@ public class BookingStep1 extends AppCompatActivity {
         //  if the result code is 1 then data will contain pickup location
         if(resultCode==1)
         {
-            obj1=data.getParcelableExtra("loc_info");
-            //location=data.getStringExtra("loc_name");            //getting the selected pickup location
+            obj1=data.getParcelableExtra("loc_info");        //getting the selected pickup location object
+
             location=obj1.getLocationName();
             cityId=obj1.getCityId();
             opWorkPlId=obj1.getOperationWorkplaceId();
-            lat=obj1.getLatitude();                             // getting the lat/lng of the pickup location
-            lng=obj1.getLongitude();
+//            lat=obj1.getLatitude();                             // getting the lat/lng of the pickup location
+//            lng=obj1.getLongitude();
             car_api_params.putString("PickUpCityId1",opWorkPlId);           // sending the api params to get vehicles
             car_api_params.putString("OutLocationId1",opWorkPlId);
             car_api_params.putString("OperationId",obj1.getOperationId());
             pickup_loc.setText(location);
-            //loc_icon1.setEnabled(true);
+
         }
         //  if the result code is 2 then data will contain drop location
         else if(resultCode==2)
         {
-            obj2=data.getParcelableExtra("loc_info");
-            //location=data.getStringExtra("loc_name");             //getting the selected drop location
+            obj2=data.getParcelableExtra("loc_info");    //getting the selected drop location object
+
             location=obj2.getLocationName();
             //cityId=data.getStringExtra("cityId");                        // getting the city id of the drop location
             cityId=obj2.getCityId();
             //opWorkPlId=data.getStringExtra("opWorkPlId");                //getting the operation work place id of drop location
             opWorkPlId=obj2.getOperationWorkplaceId();
-            lat=obj2.getLatitude();                              // getting the lat/lng of the dropoff location
-            lng=obj2.getLongitude();
+//            lat=obj2.getLatitude();                              // getting the lat/lng of the dropoff location
+//            lng=obj2.getLongitude();
             car_api_params.putString("DropOffCityId2",opWorkPlId);           // sending the api params to get vehicles
             car_api_params.putString("ReturnLocationId2",opWorkPlId);
             drop_loc.setText(location);
-            //loc_icon2.setEnabled(true);
         }
     }
 

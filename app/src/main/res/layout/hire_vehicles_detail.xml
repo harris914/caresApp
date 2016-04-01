@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/anchor"
         android:layout_marginTop="5dip"
+        android:background="@drawable/rounded_corners_bg"
         android:weightSum="1">
         <LinearLayout
             android:id="@+id/text_layout"
@@ -97,7 +98,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/anchor"
-        android:layout_marginTop="5dip"
+
+        android:layout_marginBottom="5dip"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         >
         <LinearLayout
             android:id="@+id/right_side_row1"
@@ -237,7 +241,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="1"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="4dp"
             >
 
                 <LinearLayout
@@ -248,7 +252,7 @@
                     <ImageButton
                         android:id="@+id/getCharge"
                         android:layout_width="match_parent"
-                        android:layout_height="24dp"
+                        android:layout_height="wrap_content"
                         android:background="@drawable/getcharge"
                     />
                 </LinearLayout>
@@ -322,7 +326,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:text="Checkout"
-                    android:background="#f28d00"
+                    android:background="#000"
                     android:textColor="#FFFFFF"
 
                     />
