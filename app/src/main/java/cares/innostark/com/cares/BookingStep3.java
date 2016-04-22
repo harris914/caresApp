@@ -295,13 +295,17 @@ public class BookingStep3 extends AppCompatActivity {
             url += Constants.saveBooking;
             //String content = HttpURLConnect.saveBookingData(url,Double.valueOf(car_api_params.getString("PickUpCityId1")),Double.valueOf(car_api_params.getString("DropOffCityId2")),Double.valueOf(car_api_params.getString("OperationId")),car_api_params.getString("StartDateTime"),car_api_params.getString("EndDateTime"),Long.valueOf(car_api_params.getString("DomainKey")),Double.valueOf(s.getHireGroupDetailId()),Double.valueOf(s.getDropoffCharge()),Double.valueOf(s.getStandardRt()),ServiceItems,InsuranceTypes,s.getTariffType(),ui);
             String content = HttpURLConnect.saveBookingData(url,Double.valueOf(car_api_params.getString("PickUpCityId1")),Double.valueOf(car_api_params.getString("DropOffCityId2")),Double.valueOf(car_api_params.getString("OperationId")),car_api_params.getString("StartDateTime"),car_api_params.getString("EndDateTime"),Long.valueOf(car_api_params.getString("DomainKey")),Double.valueOf(s.getHireGroupDetailId()),Double.valueOf(s.getStandardRt()),s.getTariffType(),ui);
-            //Toast.makeText(getApplicationContext(),content,Toast.LENGTH_SHORT).show();
+
             return content;
         }
         @Override
         protected void onPostExecute(String s) {
             dialog.dismiss();
 
+            if(s == null)
+            {
+                showErrorDialog();
+            }
             if(s != null)
             {
                 //Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
@@ -310,28 +314,39 @@ public class BookingStep3 extends AppCompatActivity {
         }
     }
 
+    private void showErrorDialog() {
+        android.app.AlertDialog.Builder dialog = new android.app.AlertDialog.Builder(this);
+
+        dialog.setMessage("Dear Mr/Mrs. "+ ui.getFirstName() + ",\nAn error has occurred. Please try again!");
+        dialog.setCancelable(false);
+
+        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
     private void showBookingId(String s) {
         s = s.replace("\"", "");
 
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 
-        // ...Irrelevant code for customizing the buttons and title
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.booking_response, null);
         dialogBuilder.setView(dialogView);
         //dialogView.setBackgroundResource(R.color.wallet_hint_foreground_holo_dark);
 
         TextView text1 = (TextView) dialogView.findViewById(R.id.textView1);
-        text1.setText("Dear Mr. " + ui.getFirstName());
+        text1.setText("Dear Mr/Mrs. " + ui.getFirstName());
         TextView text2= (TextView) dialogView.findViewById(R.id.textView2);
         TextView text3 = (TextView) dialogView.findViewById(R.id.textView3);
         text3.setText(s);
-//        ImageButton image = (ImageButton) dialogView.findViewById(R.id.ok_img);
-//        image.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//            }
-//        });
+
         dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();
