@@ -51,14 +51,36 @@
 
     </android.support.v7.widget.Toolbar>
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/activity_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:gravity="center"
+        android:background="@drawable/pagination_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Bookings"
+            android:textAllCaps="true"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            />
+
+
+    </LinearLayout>
+
     <ListView
         android:id="@+id/booking_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
+        android:layout_below="@+id/activity_head"
         android:background="#FFFFFF"
         android:divider="@drawable/list_divider"
-        android:dividerHeight="2dp"/>
+        android:dividerHeight="2dp" />
 
 
 </RelativeLayout>

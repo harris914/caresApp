@@ -49,11 +49,12 @@ public class MainActivity extends Activity {
 
         siteContentList=new ArrayList<String>();
 
-        Window window = this.getWindow();                  // setting the color of the status bar
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
-
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window = this.getWindow();                  // setting the color of the status bar
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
+        }
         // Initializing the connection detector
         cd = new ConnectionDetector(this);
         if (!(cd.isConnectingToInternet())) {

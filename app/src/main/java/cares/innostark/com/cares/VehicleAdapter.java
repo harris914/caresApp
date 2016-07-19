@@ -9,7 +9,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -55,7 +54,6 @@ public class VehicleAdapter extends ArrayAdapter {
 
         s = result.get(position);
         if(s != null) {
-            //v = inflater.inflate(R.layout.hire_vehicles_detail, null);
             v = inflater.inflate(R.layout.hire_vehicles_detail, null);
             if (position % 2 == 1) {
                 v.setBackgroundColor(Color.parseColor("#EEEEEE"));
@@ -69,10 +67,9 @@ public class VehicleAdapter extends ArrayAdapter {
             final TextView suitcase_count= (TextView) v.findViewById(R.id.suitcase_count);
             final TextView airbag_count= (TextView) v.findViewById(R.id.airbag_count);
             final TextView door_count= (TextView) v.findViewById(R.id.door_count);
-            final ImageButton getCharge=(ImageButton) v.findViewById(R.id.getCharge);
+            final Button getCharge=(Button) v.findViewById(R.id.getCharge);
             final Button checkout=(Button) v.findViewById(R.id.checkout);
             checkout.setVisibility(View.INVISIBLE);
-            //vehicleChargePerDay= (TextView) v.findViewById(R.id.vehicle_charge_per_day);
             totalVehicleCharge= (TextView) v.findViewById(R.id.total_vehicle_charge);
 
             if(typeTrans != null)
@@ -100,18 +97,15 @@ public class VehicleAdapter extends ArrayAdapter {
 
 
             Animation anim = new AlphaAnimation(0.0f, 1.0f);
-            anim.setDuration(200); //You can manage the blinking time with this parameter
+            anim.setDuration(200);              //You can manage the blinking time with this parameter
             anim.setStartOffset(20);
             anim.setRepeatMode(Animation.REVERSE);
             anim.setRepeatCount(Animation.INFINITE);
             getCharge.startAnimation(anim);
-            //setting on click listener on getcharge button to get vehicle charge
+
             getCharge.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    //vehicleCharge.setVisibility(View.VISIBLE);
-                    //checkout.setVisibility(View.VISIBLE);
-                    //getCharge.setVisibility(View.GONE);
+                public void onClick(View v) {        //setting on click listener on getcharge button to get vehicle charge
                     ((ListView) parent).performItemClick(v, position , 0);
                     //this sends a callback to the previous Activity's OnItemClick on which the listView is being shown and
                     // I make the API call to get charges.

@@ -1,6 +1,247 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:id="@+id/anchor"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_centerInParent="true" />
+
+        <RelativeLayout
+            android:id="@+id/right_side"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dip"
+            android:layout_marginBottom="3dip"
+            android:layout_toRightOf="@id/anchor"
+            android:background="@drawable/rounded_corners_bg"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:id="@+id/image_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_layout"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp">
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:orientation="horizontal"/>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout1"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".8"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/vehicle_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:orientation="horizontal"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buttons_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_layout"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:orientation="horizontal" />
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".8"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/vehicle_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:orientation="horizontal" />
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/left_side"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/anchor"
+            >
+            <LinearLayout
+                android:id="@+id/left_side_row1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginTop="10dp"
+                >
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:layout_weight=".05">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".4"
+                    >
+                    <TextView
+                        android:id="@+id/booking_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:text="BN-201"
+                        android:textStyle="bold|italic"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".55"
+                    >
+                    <TextView
+                        android:id="@+id/charge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginRight="5dp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/left_side_row2"
+                android:layout_below="@+id/left_side_row1"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginTop="5dp"
+                >
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:layout_weight=".05">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".9"
+                    >
+                    <TextView
+                        android:id="@+id/date_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:text="date_time"
+                        />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:layout_weight=".05">
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/left_side_row3"
+                android:layout_below="@+id/left_side_row2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:layout_marginTop="5dp">
+
+                <LinearLayout android:layout_width="0dip"
+                    android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:layout_weight=".05">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".15"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/reminder"
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:background="@drawable/reminder"
+                        android:clickable="true" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".8"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Create Event"
+                        android:textColor="#000"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@+id/wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:orientation="horizontal"
+            >
+            <LinearLayout android:layout_width="0dip"
+                android:layout_height="wrap_content" android:orientation="horizontal"
+                android:id="@+id/linearLayout_dummy9" android:layout_weight=".05">
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

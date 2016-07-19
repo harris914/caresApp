@@ -83,10 +83,12 @@ public class BookingStep3 extends AppCompatActivity {
             }
         });
 
-        Window window = this.getWindow();                  // setting the color of the status bar
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window = this.getWindow();                  // setting the color of the status bar
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
+        }
 
         fname=(EditText) findViewById(R.id.first_name);
         fname.setBackground(null);               // to remove the underlining of the edittexts
@@ -152,6 +154,7 @@ public class BookingStep3 extends AppCompatActivity {
         model.setVehicleMake(s.getVehicleMake());
         model.setVehicleModel(s.getVehicleModel());
         model.setVehicleYear(s.getModelYear());
+        model.setImageUrl(s.getImageUrl());
     }
 
 
@@ -326,6 +329,8 @@ public class BookingStep3 extends AppCompatActivity {
             }
             if(s != null)
             {
+                s = s.replace("\"", "");
+                model.setBookingId(s);
                 showBookingId(s);
             }
         }
@@ -356,7 +361,6 @@ public class BookingStep3 extends AppCompatActivity {
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.booking_response, null);
         dialogBuilder.setView(dialogView);
-        //dialogView.setBackgroundResource(R.color.wallet_hint_foreground_holo_dark);
 
         TextView text1 = (TextView) dialogView.findViewById(R.id.textView1);
         text1.setText("Dear Mr/Mrs. " + ui.getFirstName());
@@ -364,16 +368,16 @@ public class BookingStep3 extends AppCompatActivity {
         TextView text3 = (TextView) dialogView.findViewById(R.id.textView3);
         text3.setText(s);
 
-        dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.dismiss();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });
+//        dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//            public void onClick(DialogInterface dialog, int id) {
+//                dialog.dismiss();
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(intent);
+//            }
+//        });
 
-        dialogBuilder.setNegativeButton("Ok1", new DialogInterface.OnClickListener() {
+        dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 sharedPreference.addBooking(BookingStep3.this, model);
                 Intent i = new Intent(BookingStep3.this,BookingListActivity.class);

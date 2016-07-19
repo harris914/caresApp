@@ -61,10 +61,12 @@ public class BookingStep1 extends AppCompatActivity {
 
         car_api_params=new Bundle();
 
-        Window window = this.getWindow();                // setting the color of the status bar
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window = this.getWindow();                  // setting the color of the status bar
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
+        }
 
         //calendar instance
         c = Calendar.getInstance();

@@ -62,10 +62,12 @@ public class BookingStep2 extends AppCompatActivity implements AdapterView.OnIte
         else
             getCarsData();
 
-        Window window = this.getWindow();                // setting the color of the status bar
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window = this.getWindow();                  // setting the color of the status bar
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
+        }
 
         hireGroupList=(ListView) findViewById(R.id.car_list);
         //hireGroupList = (HorizontalListView) findViewById(R.id.car_list);
@@ -116,7 +118,6 @@ public class BookingStep2 extends AppCompatActivity implements AdapterView.OnIte
         final HireGroups i = items.get(position % 3);        // taking mode here because we have repeated the list 3 times
         String hiregrpname=i.getHireGroupName();
         final ArrayList<SubHireGroups> sh=i.getSubHireGroup();
-        //Toast.makeText(BookingStep2.this, "Hello", Toast.LENGTH_SHORT).show();
         Intent in= new Intent(this,HireGroupDetailActivity.class);
         in.putExtra("SubHireGroup",sh);
         in.putExtra("hiregrpname",hiregrpname);

@@ -75,10 +75,12 @@ public class SelectLocation extends AppCompatActivity {
             }
         });
 
-        Window window = this.getWindow();                // setting the color of the status bar
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window = this.getWindow();                  // setting the color of the status bar
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
+        }
 
         for(int count=0; count < workLocs.size();count++)     // adding the correct location objects to show on the listview
         {

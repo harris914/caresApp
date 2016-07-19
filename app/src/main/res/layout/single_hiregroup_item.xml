@@ -203,22 +203,6 @@
             android:layout_height="wrap_content" android:orientation="horizontal"
             android:id="@+id/linearLayout_dummy9" android:layout_weight=".05">
         </LinearLayout>
-        <!--<LinearLayout-->
-            <!--android:layout_width="0dip"-->
-            <!--android:layout_height="wrap_content" android:orientation="horizontal"-->
-            <!--android:id="@+id/linearLayout_dummy10" android:layout_weight=".95">-->
-        <!--<TextView-->
-            <!--android:id="@+id/hire_group_desc"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:textColor="#000"-->
-            <!--android:text="description"-->
-            <!--android:textSize="15sp"-->
-            <!--android:textStyle="normal"-->
-            <!--android:textColorHighlight="#f28d00"-->
-            <!--android:visibility="gone"-->
-            <!--/>-->
-        <!--</LinearLayout>-->
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

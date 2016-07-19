@@ -15,6 +15,8 @@ public class BookingModel implements Parcelable{
     private String vehicleMake;
     private String vehicleModel;
     private String vehicleYear;
+    private String bookingId;
+    private String imageUrl;
 
     public BookingModel(Parcel in) {
         pickUpLocation = in.readString();
@@ -25,6 +27,8 @@ public class BookingModel implements Parcelable{
         vehicleYear = in.readString();
         vehicleModel = in.readString();
         vehicleMake = in.readString();
+        bookingId = in.readString();
+        imageUrl = in.readString();
     }
 
     public static final Creator<BookingModel> CREATOR = new Creator<BookingModel>() {
@@ -90,6 +94,8 @@ public class BookingModel implements Parcelable{
         dest.writeString(vehicleMake);
         dest.writeString(vehicleModel);
         dest.writeString(vehicleYear);
+        dest.writeString(bookingId);
+        dest.writeString(imageUrl);
     }
 
     public String getTotalCharge() {
@@ -122,5 +128,21 @@ public class BookingModel implements Parcelable{
 
     public void setVehicleYear(String vehicleYear) {
         this.vehicleYear = vehicleYear;
+    }
+
+    public String getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(String bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

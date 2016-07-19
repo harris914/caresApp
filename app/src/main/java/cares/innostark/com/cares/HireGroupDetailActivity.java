@@ -11,7 +11,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -58,15 +57,16 @@ public class HireGroupDetailActivity extends AppCompatActivity implements Adapte
         Intent i=getIntent();             //getting intent from the previous activity
         car_api_params=i.getExtras();        //getting bundle from previous activity
 
-        Window window = this.getWindow();                // setting the color of the status bar
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
+        if (android.os.Build.VERSION.SDK_INT >= 21) {
+            Window window = this.getWindow();                  // setting the color of the status bar
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(this.getResources().getColor(android.R.color.black));
+        }
 
         vehicleList=(ListView) findViewById(R.id.vehicle_list);
         list=i.getExtras().getParcelableArrayList("SubHireGroup");
         hiregrpname=i.getExtras().getString("hiregrpname");
-        //adapter= new VehicleAdapter(HireGroupDetailActivity.this,list,hiregrpname,car_api_params.getString("OperationId"),car_api_params.getString("EndDateTime"),car_api_params.getString("StartDateTime"),car_api_params.getString("DomainKey"));
         adapter= new VehicleAdapter(HireGroupDetailActivity.this,list,hiregrpname);
         vehicleList.setOnItemClickListener(HireGroupDetailActivity.this);
         vehicleList.setAdapter(adapter);
@@ -105,7 +105,6 @@ public class HireGroupDetailActivity extends AppCompatActivity implements Adapte
 
     private void getSelectedCarInfoAndMoveToStep3(int position) {
         SubHireGroups s= list.get(position);
-        //String sh_id=s.getHireGroupDetailId();
         car_api_params.putParcelable("SubHireGroup",s);
         Intent in=new Intent(this,BookingStep3.class);
         in.putExtras(car_api_params);
@@ -177,7 +176,7 @@ public class HireGroupDetailActivity extends AppCompatActivity implements Adapte
             }
             View v=getViewByPosition(pos_in_list,vehicleList);           // getting the view so that standard rates could be set from where the call came to get the charges
             final LinearLayout layout=(LinearLayout) v.findViewById(R.id.linearLayout2);
-            final ImageButton getCharge=(ImageButton) v.findViewById(R.id.getCharge);
+            final Button getCharge=(Button) v.findViewById(R.id.getCharge);
             final Button checkout=(Button) v.findViewById(R.id.checkout);
 
             totalCharges=(TextView) v.findViewById(R.id.total_vehicle_charge);

@@ -6,9 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -46,34 +49,42 @@ public class BookingListAdapter extends ArrayAdapter{
 
         booking = result.get(position);
         if(booking != null) {
-            v = inflater.inflate(R.layout.user_list_detail_item, null);
+            v = inflater.inflate(R.layout.booking_list_item, null);
             if (position % 2 == 1) {
                 v.setBackgroundColor(Color.parseColor("#EEEEEE"));
             } else {
                 v.setBackgroundColor(Color.parseColor("#DCDCDC"));
             }
-            final TextView name = (TextView) v.findViewById(R.id.name);
-            final TextView city = (TextView) v.findViewById(R.id.city);
-            final CheckBox select = (CheckBox) v.findViewById(R.id.checkbox);
-            //final TextView age = (TextView) v.findViewById(R.id.age);
+            final TextView date_time = (TextView) v.findViewById(R.id.date_time);
+            final TextView charge = (TextView) v.findViewById(R.id.charge);
+            final TextView vehicle_info= (TextView) v.findViewById(R.id.vehicle_info);
+            final TextView booking_id= (TextView) v.findViewById(R.id.booking_id);
+            final ImageView vehicle_image= (ImageView) v.findViewById(R.id.vehicle_image);
+            final ImageButton reminder= (ImageButton) v.findViewById(R.id.reminder);
 
-            if (name != null) {
-                name.setText(user.getName());
+            if (date_time != null) {
+                date_time.setText(booking.getPickUpDateTime() + " - " + booking.getDropDateTime());
             }
-            if (city != null) {
-                city.setText(user.getCity());
+            if (charge != null) {
+                String currency_label = getContext().getString(R.string.currency_label);
+                charge.setText(currency_label + " " + booking.getTotalCharge());
+            }if (booking_id != null) {
+                booking_id.setText(booking.getBookingId());
             }
-            if (select != null) {
-                select.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //Toast.makeText(getContext(),"Hello",Toast.LENGTH_SHORT).show();
-                        if(select.isChecked()) {
-                            ((ListView) parent).performItemClick(v, position, 0);
-                        }
-                    }
-                });
+            if (vehicle_info != null) {
+                vehicle_info.setText(booking.getVehicleMake() + " " + booking.getVehicleModel() + " " + booking.getVehicleYear());
             }
+            if(vehicle_image != null) {
+                Picasso.with(c).load(booking.getImageUrl()).into(vehicle_image);
+            }
+
+            reminder.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {        //setting on click listener on getcharge button to get vehicle charge
+                    ((ListView) parent).performItemClick(v, position , 0);
+                    //this sends a callback to the previous Activity's OnItemClick on which the listView is being shown
+                }
+            });
         }
         return v;
     }

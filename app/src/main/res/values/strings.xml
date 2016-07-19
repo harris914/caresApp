@@ -35,4 +35,5 @@
     <string name="pickup_datetime_title">Pick-Up Date/Time</string>
     <string name="drop_datetime_title">Drop-Off Date/Time</string>
     <string name="title_activity_booking_list">BookingListActivity</string>
+    <string name="currency_label"><b>SAR</b></string>
 </resources>
