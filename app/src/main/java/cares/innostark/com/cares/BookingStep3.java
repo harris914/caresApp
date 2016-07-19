@@ -25,8 +25,10 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
+import cares.innostark.com.cares.Models.BookingModel;
 import cares.innostark.com.cares.Models.ModelStep1;
 import cares.innostark.com.cares.Models.SubHireGroups;
 import cares.innostark.com.cares.Models.UserInfo;
@@ -35,15 +37,18 @@ public class BookingStep3 extends AppCompatActivity {
 
     EditText fname,lname,address,email,phone,dob;
     Button submit;
-    ImageButton show_order_info;
+    ImageButton show_booking_info;
     private boolean isLoaded;
     private ProgressDialog dialog;
     Bundle car_api_params;
     Intent i;
     public ModelStep1 m;
+    public BookingModel model;
     SubHireGroups s;
     UserInfo ui=new UserInfo();
     SharedPreferences prefs;
+    SharedPreference sharedPreference;
+    public ArrayList<BookingModel> items = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,7 @@ public class BookingStep3 extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.search_tool_bar);
         toolbar.setNavigationIcon(R.drawable.back_arrow);
         setSupportActionBar(toolbar);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,22 +66,20 @@ public class BookingStep3 extends AppCompatActivity {
             }
         });
 
+        sharedPreference = new SharedPreference();       // initializing SharedPreference class
+        model= new BookingModel();                //initializing booking model object
+
         prefs = getSharedPreferences("UserData", MODE_PRIVATE);
-//        String restoredText = prefs.getString("CheckVal", null);
-//        if (restoredText != null) {
-//            String name = prefs.getString("name", "No name defined");//"No name defined" is the default value.
-//            int idName = prefs.getInt("idName", 0); //0 is the default value.
-//        }
 
         i=getIntent();
         car_api_params=i.getExtras();
         m=car_api_params.getParcelable("ModelStep1Obj");        // getting the ModelStep1 object from the bundle
         s=car_api_params.getParcelable("SubHireGroup");        // getting the subhiregroup object from the bundle
-        show_order_info=(ImageButton) findViewById(R.id.show_order_info);
-        show_order_info.setOnClickListener(new View.OnClickListener() {
+        show_booking_info=(ImageButton) findViewById(R.id.show_order_info);
+        show_booking_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showOrderDialog();
+                showBookingDialog();
             }
         });
 
@@ -121,7 +125,7 @@ public class BookingStep3 extends AppCompatActivity {
                         dob.setText("" + selectedmonth + "/" + selectedday + "/" + selectedyear);
                     }
                 }, mYear, mMonth, mDay);
-                mDatePicker.setTitle("Select Drop-off Date");
+                mDatePicker.setTitle("Select Date Of Birth:");
                 mDatePicker.show();
             }
         });
@@ -131,7 +135,7 @@ public class BookingStep3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(validateForm()) {
-                    // Toast.makeText(BookingStep3.this,"Form filled",Toast.LENGTH_SHORT).show();
+                    initializeBookingModel();
                     saveBookingInfo();
                 }
             }
@@ -139,8 +143,19 @@ public class BookingStep3 extends AppCompatActivity {
 
     }
 
+    private void initializeBookingModel() {
+        model.setPickUpLocation(m.getPickUpLocation());
+        model.setDropLocation(m.getDropLocation());
+        model.setPickUpDateTime(car_api_params.getString("StartDateTime"));
+        model.setDropDateTime(car_api_params.getString("EndDateTime"));
+        model.setTotalCharge(s.getTotalStandardCharge());
+        model.setVehicleMake(s.getVehicleMake());
+        model.setVehicleModel(s.getVehicleModel());
+        model.setVehicleYear(s.getModelYear());
+    }
 
-    private void showOrderDialog() {
+
+    private void showBookingDialog() {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         //dialogBuilder.setTitle("Booking Details");
         TextView title = new TextView(this);
@@ -163,12 +178,16 @@ public class BookingStep3 extends AppCompatActivity {
 
         TextView pickup_loc = (TextView) dialogView.findViewById(R.id.pickup_loc_value);
         pickup_loc.setText(m.getPickUpLocation());
+
         TextView drop_loc = (TextView) dialogView.findViewById(R.id.drop_loc_value);
         drop_loc.setText(m.getDropLocation());
+
         TextView pickup_dtTime = (TextView) dialogView.findViewById(R.id.pickup_datetime_value);
         pickup_dtTime.setText(car_api_params.getString("StartDateTime"));
+
         TextView drop_dtTime = (TextView) dialogView.findViewById(R.id.drop_datetime_value);
         drop_dtTime.setText(car_api_params.getString("EndDateTime"));
+
         TextView vehicleMake = (TextView) dialogView.findViewById(R.id.vehicle_make);
         vehicleMake.setText(s.getVehicleMake());
         TextView vehicleModel = (TextView) dialogView.findViewById(R.id.vehicle_model);
@@ -293,7 +312,6 @@ public class BookingStep3 extends AppCompatActivity {
         protected String doInBackground(String... params) {
 
             url += Constants.saveBooking;
-            //String content = HttpURLConnect.saveBookingData(url,Double.valueOf(car_api_params.getString("PickUpCityId1")),Double.valueOf(car_api_params.getString("DropOffCityId2")),Double.valueOf(car_api_params.getString("OperationId")),car_api_params.getString("StartDateTime"),car_api_params.getString("EndDateTime"),Long.valueOf(car_api_params.getString("DomainKey")),Double.valueOf(s.getHireGroupDetailId()),Double.valueOf(s.getDropoffCharge()),Double.valueOf(s.getStandardRt()),ServiceItems,InsuranceTypes,s.getTariffType(),ui);
             String content = HttpURLConnect.saveBookingData(url,Double.valueOf(car_api_params.getString("PickUpCityId1")),Double.valueOf(car_api_params.getString("DropOffCityId2")),Double.valueOf(car_api_params.getString("OperationId")),car_api_params.getString("StartDateTime"),car_api_params.getString("EndDateTime"),Long.valueOf(car_api_params.getString("DomainKey")),Double.valueOf(s.getHireGroupDetailId()),Double.valueOf(s.getStandardRt()),s.getTariffType(),ui);
 
             return content;
@@ -308,7 +326,6 @@ public class BookingStep3 extends AppCompatActivity {
             }
             if(s != null)
             {
-                //Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
                 showBookingId(s);
             }
         }
@@ -353,6 +370,15 @@ public class BookingStep3 extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+            }
+        });
+
+        dialogBuilder.setNegativeButton("Ok1", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                sharedPreference.addBooking(BookingStep3.this, model);
+                Intent i = new Intent(BookingStep3.this,BookingListActivity.class);
+                startActivity(i);
+                finish();
             }
         });
 

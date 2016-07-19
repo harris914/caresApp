@@ -215,8 +215,6 @@ public class BookingStep1 extends AppCompatActivity {
 
             }
         });
-
-
         // pickup info ends here
 
         // setting drop info
