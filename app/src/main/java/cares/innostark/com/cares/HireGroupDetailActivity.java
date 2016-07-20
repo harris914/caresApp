@@ -180,7 +180,14 @@ public class HireGroupDetailActivity extends AppCompatActivity implements Adapte
             final Button checkout=(Button) v.findViewById(R.id.checkout);
 
             totalCharges=(TextView) v.findViewById(R.id.total_vehicle_charge);
-            Double per_day_charge=(total_standard_charge) / car_api_params.getInt("NoOfDays");
+            Double per_day_charge=0.0;
+            if(!shg.getTariffType().equals("H")) {
+                per_day_charge = (total_standard_charge) / car_api_params.getInt("NoOfDays");
+            }
+            else
+            {
+                per_day_charge = total_standard_charge;
+            }
             int i = per_day_charge.intValue();
             if(!(total_standard_charge.toString().equals("")))
             {

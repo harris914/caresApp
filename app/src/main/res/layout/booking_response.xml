@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#068017">
+    android:background="#f28d00">
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,7 +22,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Booking Has Completed Successfully. Your Booking ID is as follows:"
+        android:text="Your booking has completed successfully. Your booking ID is:"
         android:textColor="#fff"
         android:layout_marginTop="10dp"
         android:textSize="14sp"

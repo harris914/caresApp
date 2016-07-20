@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:id="@+id/main_relative"
     android:orientation="vertical"
-    android:background="#f28d00"
+    android:background="#e6e6e6"
     >
 
         <LinearLayout

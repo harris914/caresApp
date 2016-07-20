@@ -71,7 +71,7 @@ public class MapsActivity extends FragmentActivity {
             mMap.addMarker(new MarkerOptions().position(loc).title(obj.getLocationName()).snippet(obj.getAddress()+"\n"+obj.getPhone()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
-        mMap.animateCamera( CameraUpdateFactory.zoomTo( 17.0f ) );
+        mMap.animateCamera( CameraUpdateFactory.zoomTo( 10.0f ) );
         mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
             @Override
             public View getInfoWindow(Marker marker) {
@@ -120,7 +120,7 @@ public class MapsActivity extends FragmentActivity {
                     mMap.addMarker(new MarkerOptions().position(loc).title(obj.getLocationName()).snippet(obj.getAddress() + "\n" + obj.getPhone()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(5.0f));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(2.0f));
                 mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
                     @Override
                     public View getInfoWindow(Marker marker) {

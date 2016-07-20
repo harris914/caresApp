@@ -1,11 +1,11 @@
 package cares.innostark.com.cares;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -409,8 +409,6 @@ public class BookingStep1 extends AppCompatActivity {
             location=obj1.getLocationName();
             cityId=obj1.getCityId();
             opWorkPlId=obj1.getOperationWorkplaceId();
-//            lat=obj1.getLatitude();                             // getting the lat/lng of the pickup location
-//            lng=obj1.getLongitude();
             car_api_params.putString("PickUpCityId1",opWorkPlId);           // sending the api params to get vehicles
             car_api_params.putString("OutLocationId1",opWorkPlId);
             car_api_params.putString("OperationId",obj1.getOperationId());
@@ -423,12 +421,8 @@ public class BookingStep1 extends AppCompatActivity {
             obj2=data.getParcelableExtra("loc_info");    //getting the selected drop location object
 
             location=obj2.getLocationName();
-            //cityId=data.getStringExtra("cityId");                        // getting the city id of the drop location
             cityId=obj2.getCityId();
-            //opWorkPlId=data.getStringExtra("opWorkPlId");                //getting the operation work place id of drop location
             opWorkPlId=obj2.getOperationWorkplaceId();
-//            lat=obj2.getLatitude();                              // getting the lat/lng of the dropoff location
-//            lng=obj2.getLongitude();
             car_api_params.putString("DropOffCityId2",opWorkPlId);           // sending the api params to get vehicles
             car_api_params.putString("ReturnLocationId2",opWorkPlId);
             drop_loc.setText(location);
@@ -439,6 +433,7 @@ public class BookingStep1 extends AppCompatActivity {
     {
 
         Boolean flag=true;
+        Boolean flag1=true;
         String errorString = "";
         if(pickup_loc.getText().toString().isEmpty())
         {
@@ -496,58 +491,86 @@ public class BookingStep1 extends AppCompatActivity {
         }
         if(!(drop_date.getText().toString().isEmpty()) && !(pickup_date.getText().toString().isEmpty()))
         {
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-            SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
-            String datePick = pickup_date.getText().toString();
-            String dateDrop=drop_date.getText().toString();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+            String dateTimePick = pickup_date.getText().toString()+" "+ pickup_time.getText().toString();
+            String dateTimeDrop=drop_date.getText().toString() + " " + drop_time.getText().toString();
 
-            int cur_Year = c.get(Calendar.YEAR);                   //setting current date to the pickup date field
-            int cur_Month = c.get(Calendar.MONTH)+1 ;
-            int cur_Day = c.get(Calendar.DAY_OF_MONTH);
-            String currentDate = cur_Day + "/"+cur_Month +"/" + cur_Year;
+            String currentDateTime = formatter.format(new Date());
+
+            Calendar beginDateTime = Calendar.getInstance();
+            Calendar endDateTime = Calendar.getInstance();
+            Calendar currDateTime = Calendar.getInstance();
+
             try {
+                beginDateTime.setTime(new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(dateTimePick));
+                endDateTime.setTime(new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(dateTimeDrop));
+                currDateTime.setTime(new SimpleDateFormat("dd/MM/yyyy hh:mm").parse(currentDateTime));
+                beginDateTime.getTimeInMillis();
+                endDateTime.getTimeInMillis();
+                currDateTime.getTimeInMillis();
+                Date date = formatter.parse(dateTimePick);
+                Date date2 = formatter.parse(dateTimeDrop);
+                Date cur_date=formatter.parse(currentDateTime);
 
-                Date date = formatter.parse(datePick);
-                Date date2 = formatter2.parse(dateDrop);
-                Date cur_date=formatter2.parse(currentDate);
-
-                if (date2.before(date)){
+                if (endDateTime.before(beginDateTime) || endDateTime.equals(beginDateTime)){
                     flag=false;
-                    errorString+="- Drop-off Date Should Be Greater Than Pick-up Date.\n";
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder
-                            .setTitle("Please Correct following error")
-                            .setMessage(errorString)
-                            .setCancelable(false)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    //do things
-                                }
-                            });
-                    AlertDialog alert = builder.create();
-                    alert.show();
+                    errorString+="- Drop-off Date Time Should Be Greater Than Pick-up Date Time.\n";
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                    builder
+//                            .setTitle("Please Correct following error")
+//                            .setMessage(errorString)
+//                            .setCancelable(false)
+//                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int id) {
+//                                    //do things
+//                                }
+//                            });
+//                    AlertDialog alert = builder.create();
+//                    alert.show();
                 }
-                if(date.before(cur_date))
+
+                if(beginDateTime.before(currDateTime))
                 {
                     flag=false;
-                    errorString+="- Pick-up Date Should Be Greater Than Current Date.\n";
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder
-                            .setTitle("Please Correct following error")
-                            .setMessage(errorString)
-                            .setCancelable(false)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    //do things
-                                }
-                            });
-                    AlertDialog alert = builder.create();
-                    alert.show();
+                    errorString+="- Pick-up Date Time Should Be Greater Than Current Date Time.\n";
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                    builder
+//                            .setTitle("Please Correct following error")
+//                            .setMessage(errorString)
+//                            .setCancelable(false)
+//                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int id) {
+//                                    //do things
+//                                }
+//                            });
+//                    AlertDialog alert = builder.create();
+//                    alert.show();
                 }
                 long diff = date2.getTime() - date.getTime();
                 int dif= (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-                //Toast.makeText(getApplicationContext(),dif,Toast.LENGTH_SHORT).show();
+
+                int diffInMins = (int) (diff / (60 * 1000));
+                if(diffInMins <= 30 )
+                {
+                        flag=false;
+                        errorString+="- Reservation Time Duration Should Be Greater than 30 minutes.\n";
+                }
                 car_api_params.putInt("NoOfDays",dif);
+                if(!errorString.isEmpty() && !flag)
+                {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder
+                            .setTitle("Please Correct following error")
+                            .setMessage(errorString)
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //do things
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
 
             } catch (ParseException e) {
                 e.printStackTrace();
